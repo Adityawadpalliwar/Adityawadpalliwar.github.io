@@ -454,6 +454,20 @@
     margin-top: 0.75rem;
   }
 
+  .mini-build-points {
+    margin: 0.6rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--muted);
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.8;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .mini-build-points li {
+    text-align: left;
+  }
+
   .tag {
     font-family: var(--mono);
     font-size: 10px;
@@ -521,6 +535,19 @@
     color: var(--muted);
     font-size: 14px;
     line-height: 1.8;
+  }
+
+  .project-points {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.65rem;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.8;
+  }
+
+  .project-points li {
+    text-align: left;
   }
 
   .project-badge {
@@ -917,7 +944,7 @@
   <div class="about-grid" style="grid-template-columns:1fr;">
     <div class="about-text reveal">
       <p>I'm <strong>Aditya Wadpalliwar</strong>, a 3rd-year B.Tech ECE student at <strong>NIT Trichy</strong>, passionate about bridging the gap between hardware and intelligent control systems.</p>
-      <p>My work spans the full stack of embedded engineering — from schematic design and 4-layer PCB layout in KiCad, to writing tight real-time firmware in C/C++ for STM32 microcontrollers.</p>
+      <p>My work spans the full stack of embedded engineering — from schematic design and PCB layout in KiCad, to writing tight real-time firmware in C/C++ for microcontrollers.</p>
       <p>I'm a Robotics Engineer at <strong>SPIDER R&D Club</strong> at NIT Trichy, where I've contributed to autonomous robots, flight controllers, and control systems for national-level competitions.</p>
     </div>
   </div>
@@ -1031,7 +1058,11 @@
       <div>
         <div class="project-date">OCT 2025</div>
         <div class="project-title">Line Following & Maze-Solving Robot</div>
-        <p class="project-desc">Designed and developed an autonomous robot capable of following a white line and solving maze structures. Implemented the <strong style="color:var(--text)">LSRB maze-solving algorithm</strong> with a PID control system for accurate path tracking and smooth motion. The project involved real-time sensor feedback, decision-making logic, and actuator control for autonomous navigation.</p>
+        <ul class="project-desc project-points">
+          <li>Designed and developed an autonomous line-following and maze-solving robot using real-time sensor feedback for precise navigation.</li>
+          <li>Implemented a PID control system to achieve smooth motion and accurate path tracking along the target line.</li>
+          <li>Programmed the LSRB maze-solving algorithm to make automated turning decisions and efficiently solve complex path layouts.</li>
+        </ul>
         <div class="skill-tags" style="margin-top:1rem">
           <span class="tag hot">LSRB Algorithm</span>
           <span class="tag">PID Control</span>
@@ -1046,7 +1077,11 @@
       <div>
         <div class="project-date">AUG 2025</div>
         <div class="project-title">Self-Balancing Robot — eYantra Krishi Balancer</div>
-        <p class="project-desc">Built a self-balancing robot for the eYantra 2025 competition. Developed mechanical CAD in <strong style="color:var(--text)">Fusion 360</strong> and 3D-printed structural parts. Designed and implemented a closed-loop control system using IMU and wheel encoders, with a parallel PID controller tuned to minimize tilt error and ensure stable balancing under external disturbances. Involved sensor fusion, actuator control, and full system integration.</p>
+        <ul class="project-desc project-points">
+          <li>Developed an inverted pendulum robot featuring an 6-DOF IMU, quadrature wheel encoders, and customized power/actuator drive circuitry.</li>
+          <li>Implemented complementary filtering for IMU sensor fusion to achieve low-noise tilt angle estimation.</li>
+          <li>Tuned a parallel PID control loop to drive DC motors via PWM, maintaining dynamic stability and disturbance rejection.</li>
+        </ul>
         <div class="skill-tags" style="margin-top:1rem">
           <span class="tag hot">IMU Fusion</span>
           <span class="tag">Fusion 360</span>
@@ -1084,7 +1119,12 @@
     <div class="skill-card reveal" style="cursor:default;">
       <div class="skill-icon">▸</div>
       <div class="skill-title">Flappy Bird Implementation in 8051 Assembly</div>
-      <p style="font-size:13px;color:var(--muted)">A fully functional implementation of Flappy Bird written in 8051 Assembly language. This project leverages non-blocking timing loops to achieve smooth 8X8 LED matrix multiplexing while simultaneously handling game physics, collision detection, and user input.</p>
+      <ul class="mini-build-points">
+        <li>Designed and built a complete Flappy Bird game on an 8051 microcontroller using Assembly language, combining smooth LED matrix rendering with real-time game physics.</li>
+        <li>Implemented custom non-blocking timing loops, bitwise mechanics for bird movement, and real-time collision detection.</li>
+        <li>Integrated hardware-based obstacle randomization using an external timer and configured a 16x2 LCD display for live score tracking.</li>
+        <li>Simulated and validated the full circuit and assembly code in Proteus to ensure stable performance and precise timing.</li>
+      </ul>
       <div class="skill-tags"><span class="tag">8051 Assembly</span></div>
     </div>
   </div>
@@ -1102,7 +1142,11 @@
       <div class="exp-period">MAY 2026 – JULY 2026</div>
       <div class="exp-role">Robotics Hardware Intern</div>
       <div class="exp-org">xTerra Robotics</div>
-      <p class="exp-desc">Designed and developed a complete Battery Management System (BMS) for a quadruped robot, covering the full development cycle from schematic design and PCB layout in KiCad to firmware implementation. Created comprehensive documentation and a testing manual for the BMS, and contributed to validation of the Power Distribution Board by authoring a structured test plan and executing hardware-level testing at a testing facility.</p>
+      <ul class="exp-desc">
+        <li>Designed, laid out, and developed a complete Battery Management System (BMS) PCB in KiCad for a quadruped robot.</li>
+        <li>Authored comprehensive technical documentation and a structured testing manual to ensure proper system evaluation.</li>
+        <li>Validated the Power Distribution Board (PDB) by writing a hardware test plan and executing physical testing at a specialized facility.</li>
+      </ul>
     </div>
   </div>
 
@@ -1129,15 +1173,19 @@
   <div class="achieve-grid">
     <div class="achieve-card reveal">
       <div class="achieve-num">#2</div>
-      <div class="achieve-text"><strong>Robotics Challenge</strong> — 2nd Place, SENSORS — Departmental Symposium of ICE, NIT Trichy</div>
+      <div class="achieve-text"><strong>Robotics Challenge</strong>  2nd Place, SENSORS — Departmental Symposium of ICE, NIT Trichy</div>
     </div>
     <div class="achieve-card reveal">
       <div class="achieve-num">T10</div>
-      <div class="achieve-text"><strong>Embedded Programming Challenge</strong> — Top 10 out of 853 teams, Shaastra 2026, IIT Madras</div>
+      <div class="achieve-text"><strong>Embedded Programming Challenge</strong> Top 10 out of 853 teams, Shaastra 2026, IIT Madras</div>
     </div>
     <div class="achieve-card reveal">
       <div class="achieve-num">T20</div>
-      <div class="achieve-text"><strong>Reverse Engineering Challenge</strong> — Top 20 out of 755 teams, Shaastra 2026, IIT Madras</div>
+      <div class="achieve-text"><strong>Reverse Engineering Challenge</strong> Top 20 out of 755 teams, Shaastra 2026, IIT Madras</div>
+    </div>
+    <div class="achieve-card reveal">
+      <div class="achieve-num" style="font-size:1.1rem;min-width:28px;">EYRC</div>
+      <div class="achieve-text"><strong>e-Yantra Robotics Challenge (eYRC)</strong> Ranked in the top 50 out of 650+ competing teams nationwide to qualify for Stage 2 of the competition for <strong>KrishiBalancer (KB)</strong> theme</div>
     </div>
   </div>
 </section>
