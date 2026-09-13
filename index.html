@@ -1,1294 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Aditya Wadpalliwar — Electronics Engineer</title>
-<meta name="description" content="Portfolio of Aditya Wadpalliwar, Electronics & Communication Engineering student at NIT Trichy. Specializing in digital design, PCB layout, embedded firmware (STM32), control systems, and robotics." />
-<meta name="keywords" content="Aditya Wadpalliwar, Electronics Engineer, Embedded Systems, PCB Design, STM32, KiCad, Verilog, NIT Trichy, Robotics, SPIDER R&D Club" />
-<meta name="author" content="Aditya Wadpalliwar" />
-<meta name="robots" content="index, follow" />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://adityawadpalliwar.github.io/" />
-<meta property="og:title" content="Aditya Wadpalliwar — Electronics Engineer" />
-<meta property="og:description" content="Electronics engineer and robotics enthusiast at NIT Trichy. Designing multi-layer PCBs, real-time firmware, and autonomous systems." />
-<meta property="og:image" content="https://adityawadpalliwar.github.io/og-image.png" />
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://adityawadpalliwar.github.io/" />
-<meta property="twitter:title" content="Aditya Wadpalliwar — Electronics Engineer" />
-<meta property="twitter:description" content="Electronics engineer and robotics enthusiast at NIT Trichy. Designing multi-layer PCBs, real-time firmware, and autonomous systems." />
-<meta property="twitter:image" content="https://adityawadpalliwar.github.io/og-image.png" />
-
-<link rel="canonical" href="https://adityawadpalliwar.github.io/" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #080c10;
-    --bg2: #0d1318;
-    --bg3: #111820;
-    --panel: #0e1620;
-    --accent: #00d4ff;
-    --accent2: #00ff9d;
-    --accent3: #ff6b35;
-    --text: #e2eaf2;
-    --muted: #6b8296;
-    --border: rgba(0,212,255,0.15);
-    --border2: rgba(0,212,255,0.08);
-    --grid: rgba(0,212,255,0.04);
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Inter', sans-serif;
-    --display: 'Space Grotesk', sans-serif;
-  }
-
-  h1, h2, h3, h4, h5, h6, .hero-name, .section-title, .project-title, .skill-title, .exp-role, .edu-degree {
-    font-family: var(--display);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  p {
-    text-align: justify;
-  }
-
-  /* ─── GRID BACKGROUND ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ─── CIRCUIT TRACE DECORATIONS ─── */
-  .circuit-svg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.25;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 4rem;
-    height: 64px;
-    background: rgba(8,12,16,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border2);
-  }
-
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .nav-logo span { color: var(--muted); }
-
-  nav ul {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  nav a {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  nav a:hover { color: var(--accent); }
-
-  .menu-toggle {
-    display: none;
-    cursor: pointer;
-    width: 24px;
-    height: 18px;
-    position: relative;
-    z-index: 101;
-  }
-  .hamburger {
-    width: 100%;
-    height: 2px;
-    background: var(--accent);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: background 0.3s;
-  }
-  .hamburger::before, .hamburger::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: var(--accent);
-    transition: top 0.3s, transform 0.3s;
-    left: 0;
-  }
-  .hamburger::before { top: -7px; }
-  .hamburger::after { top: 7px; }
-
-  nav.open .hamburger { background: transparent; }
-  nav.open .hamburger::before { top: 0; transform: rotate(45deg); }
-  nav.open .hamburger::after { top: 0; transform: rotate(-45deg); }
-
-  /* ─── SECTIONS ─── */
-  section {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  /* ─── HERO ─── */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 64px;
-    max-width: 100%;
-  }
-
-  .hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    width: 100%;
-  }
-
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .hero-name {
-    font-size: clamp(3rem, 7vw, 6.5rem);
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -2px;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-name .accent { color: var(--accent); }
-
-  .hero-subtitle {
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-    letter-spacing: 1px;
-  }
-
-  .hero-subtitle .hero-focus {
-    color: var(--accent2);
-  }
-
-  .hero-desc {
-    max-width: 560px;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 14px 32px;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 700;
-    transition: transform 0.15s, box-shadow 0.15s;
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,212,255,0.35);
-  }
-
-  .btn-secondary {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 13px 32px;
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .btn-secondary:hover {
-    background: rgba(0,212,255,0.06);
-    border-color: var(--accent);
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    margin-top: 4rem;
-    padding-top: 4rem;
-    border-top: 1px solid var(--border2);
-  }
-
-  .stat-num {
-    font-family: var(--mono);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-
-  /* ─── SECTION HEADER ─── */
-  .section-header {
-    margin-bottom: 4rem;
-    padding-top: 6rem;
-  }
-
-  .section-tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--accent2);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: var(--text);
-  }
-
-  .section-line {
-    width: 48px;
-    height: 2px;
-    background: var(--accent);
-    margin-top: 1rem;
-  }
-
-  /* ─── ABOUT ─── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .about-text p {
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    font-size: 15px;
-  }
-
-  .about-text strong { color: var(--text); font-weight: 600; }
-
-  .about-panel {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 2rem;
-    position: relative;
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-  }
-
-  .about-panel::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 0 16px 16px 0;
-    border-color: transparent var(--accent) transparent transparent;
-  }
-
-  .info-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border2);
-    font-size: 13px;
-  }
-
-  .info-row:last-child { border-bottom: none; }
-
-  .info-label {
-    font-family: var(--mono);
-    color: var(--muted);
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .info-val { color: var(--text); }
-
-  .info-val a { color: var(--accent); text-decoration: none; }
-
-  .badge-accent { color: var(--accent2); font-weight: 600; }
-
-  /* ─── SKILLS ─── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .skill-card {
-    background: var(--panel);
-    border: 1px solid var(--border2);
-    padding: 1.75rem;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    transform-origin: left;
-  }
-
-  .skill-card:hover { border-color: var(--border); transform: translateY(-3px); }
-  .skill-card:hover::after { transform: scaleX(1); }
-
-  .skill-icon {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,212,255,0.08);
-    border: 1px solid var(--border);
-    margin-bottom: 1rem;
-    font-size: 16px;
-  }
-
-  .skill-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.5px;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 0.75rem;
-  }
-
-  .mini-build-points {
-    margin: 0.6rem 0 0;
-    padding-left: 1.2rem;
-    color: var(--muted);
-    font-size: clamp(14px, 1.35vw, 16px);
-    line-height: 1.8;
-    display: grid;
-    gap: 0.65rem;
-  }
-
-  .mini-build-points li {
-    text-align: left;
-  }
-
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 3px 10px;
-    background: rgba(0,212,255,0.06);
-    border: 1px solid var(--border2);
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  .tag.hot {
-    background: rgba(0,255,157,0.06);
-    border-color: rgba(0,255,157,0.2);
-    color: var(--accent2);
-  }
-
-  /* ─── PROJECTS ─── */
-  .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
-
-  .project-card {
-    background: var(--panel);
-    border: 1px solid var(--border2);
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1rem;
-    align-items: start;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transition: transform 0.3s;
-    transform-origin: top;
-  }
-
-  .project-card:hover { border-color: var(--border); }
-  .project-card:hover::before { transform: scaleY(1); }
-
-  .project-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-  }
-
-  .project-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.3px;
-  }
-
-  .project-desc {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
-  }
-
-  .project-points {
-    margin: 0;
-    padding-left: 1.2rem;
-    display: grid;
-    gap: 0.65rem;
-    font-size: clamp(14px, 1.35vw, 16px);
-    line-height: 1.8;
-  }
-
-  .project-points li {
-    text-align: left;
-  }
-
-  .project-badge {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 4px 12px;
-    border: 1px solid rgba(255,107,53,0.3);
-    color: var(--accent3);
-    background: rgba(255,107,53,0.06);
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  /* ─── EXPERIENCE ─── */
-  .exp-timeline { position: relative; padding-left: 2rem; }
-
-  .exp-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 8px; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
-  }
-
-  .exp-item {
-    position: relative;
-    margin-bottom: 3rem;
-    padding-left: 1.5rem;
-  }
-
-  .exp-item::before {
-    content: '';
-    position: absolute;
-    left: -2rem;
-    top: 8px;
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border: 2px solid var(--bg);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--accent);
-  }
-
-  .exp-period {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    margin-bottom: 0.4rem;
-  }
-
-  .exp-role {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.2rem;
-  }
-
-  .exp-org {
-    font-size: 13px;
-    color: var(--accent2);
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-  }
-
-  .exp-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  /* ─── ACHIEVEMENTS ─── */
-  .achieve-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .achieve-card {
-    background: var(--panel);
-    border: 1px solid var(--border2);
-    padding: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    transition: border-color 0.2s;
-  }
-
-  .achieve-card:hover { border-color: var(--border); }
-
-  .achieve-num {
-    font-family: var(--mono);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    min-width: 32px;
-  }
-
-  .achieve-text {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .achieve-text strong { color: var(--text); }
-
-  /* ─── EDUCATION ─── */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .edu-card {
-    background: var(--panel);
-    border: 1px solid var(--border2);
-    padding: 1.75rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-
-  .edu-card:hover { border-color: var(--border); }
-
-  .edu-year {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-  }
-
-  .edu-degree {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-
-  .edu-inst {
-    font-size: 13px;
-    color: var(--accent2);
-    margin-bottom: 0.75rem;
-  }
-
-  .edu-grade {
-    font-family: var(--mono);
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .edu-grade-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  /* ─── CONTACT ─── */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  .contact-intro {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  .contact-links {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: var(--panel);
-    border: 1px solid var(--border2);
-    text-decoration: none;
-    color: var(--text);
-    font-size: 13px;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
-
-  .contact-link-icon {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 1px;
-    min-width: 48px;
-  }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-
-  .contact-form input,
-  .contact-form textarea {
-    background: var(--panel);
-    border: 1px solid var(--border2);
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 13px;
-    padding: 12px 16px;
-    outline: none;
-    transition: border-color 0.2s;
-    letter-spacing: 0.5px;
-  }
-
-  .contact-form input:focus,
-  .contact-form textarea:focus { border-color: var(--accent); }
-
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder { color: var(--muted); }
-
-  .contact-form textarea { resize: vertical; min-height: 120px; }
-
-  /* ─── FOOTER ─── */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 3rem 2rem 4rem;
-    border-top: 1px solid var(--border2);
-    margin-top: 6rem;
-  }
-
-  footer p {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-  }
-
-  footer span { color: var(--accent); }
-
-  /* ─── SCROLL REVEAL ─── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    nav { padding: 0 1.5rem; }
-    .menu-toggle { display: block; }
-    nav ul {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Wadpalliwar | Electronics Developer</title>
+  <meta name="description" content="Portfolio of Aditya Wadpalliwar, electronics developer focused on embedded systems, robotics, and hardware design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --card: #f8fafc;
+      --blue: #2563eb;
+      --cyan: #0891b2;
+      --violet: #7c3aed;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    body::before {
+      content: "";
       position: fixed;
-      top: 0; right: -100%;
-      width: 100%; height: 100vh;
-      background: rgba(8,12,16,0.98);
-      backdrop-filter: blur(16px);
-      flex-direction: column;
+      inset: 0;
+      background-image: linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .hero {
+      padding: 5.25rem 0 2.75rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.6px;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 1.6rem;
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
-      transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-      z-index: 100;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 0.72rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.92rem;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
     }
-    nav.open ul { right: 0; }
-    nav ul li a { font-size: 16px; }
-    .hero-stats { gap: 2rem; flex-wrap: wrap; }
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .contact-links { grid-template-columns: 1fr; }
-    .hero-inner { padding: 0 1.5rem; }
-    .hero-name { font-size: clamp(1.5rem, 9vw, 3.2rem); letter-spacing: -1px; }
-    .hero-subtitle .hero-separator { display: none; }
-    .hero-subtitle .hero-focus { display: block; margin-top: 0.5rem; }
-  }
-</style>
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(37, 99, 235, 0.24);
+    }
+
+    .btn-secondary {
+      color: var(--blue);
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .icon-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .icon-link:hover {
+      border-color: #93c5fd;
+      transform: translateY(-1px);
+    }
+
+    .profile-card {
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      max-width: 330px;
+      margin-left: auto;
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid #dbeafe;
+      background: #e2e8f0;
+      display: block;
+    }
+
+    .profile-caption {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 0.93rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 2.9rem 0;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      margin-bottom: 1.25rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.05rem 1.1rem;
+    }
+
+    .card h3 {
+      font-size: 1.03rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .meta {
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    .card ul {
+      padding-left: 1.05rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .contact-note {
+      background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+      border: 1px solid #dbeafe;
+      border-radius: 16px;
+      padding: 1.4rem;
+    }
+
+    .contact-note p {
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      text-align: left;
+    }
+
+    .contact-mail {
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 2rem;
+      padding: 1.7rem 0 2rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 940px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .profile-card { margin: 0; max-width: 100%; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner { align-items: flex-start; padding: 0.7rem 0; flex-direction: column; }
+      .nav-links { gap: 0.7rem 1rem; }
+      .hero { padding-top: 3.5rem; }
+      .container, .topbar-inner { width: min(100% - 1.2rem, var(--max)); }
+      .btn { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-
-<!-- Circuit SVG background decoration -->
-<svg class="circuit-svg" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
-  <g stroke="#00d4ff" stroke-width="0.6" fill="none">
-    <!-- horizontal traces -->
-    <path d="M0 180 L120 180 L140 200 L400 200"/>
-    <circle cx="400" cy="200" r="3" fill="#00d4ff"/>
-    <path d="M400 200 L600 200 L620 180 L900 180"/>
-    <circle cx="900" cy="180" r="3" fill="#00d4ff"/>
-    <path d="M900 180 L1100 180 L1120 200 L1440 200"/>
-
-    <path d="M0 400 L80 400 L100 420 L280 420"/>
-    <circle cx="280" cy="420" r="4" fill="none" stroke="#00d4ff" stroke-width="1"/>
-    <path d="M280 420 L500 420 L520 400 L700 400"/>
-    <circle cx="700" cy="400" r="3" fill="#00d4ff"/>
-    <path d="M700 400 L1000 400 L1020 380 L1440 380"/>
-
-    <path d="M0 620 L200 620 L220 640 L440 640"/>
-    <circle cx="440" cy="640" r="3" fill="#00d4ff"/>
-    <path d="M440 640 L660 640 L680 620 L1000 620"/>
-    <path d="M1000 620 L1200 620 L1220 640 L1440 640"/>
-
-    <!-- vertical traces -->
-    <path d="M200 0 L200 100 L220 120 L220 300"/>
-    <circle cx="220" cy="300" r="3" fill="#00d4ff"/>
-    <path d="M220 300 L220 500 L200 520 L200 700"/>
-
-    <path d="M800 0 L800 80 L820 100 L820 250"/>
-    <circle cx="820" cy="250" r="4" fill="none" stroke="#00d4ff" stroke-width="1"/>
-    <path d="M820 250 L820 480 L840 500 L840 700"/>
-    <circle cx="840" cy="700" r="3" fill="#00d4ff"/>
-    <path d="M840 700 L840 900"/>
-
-    <path d="M1200 0 L1200 150 L1180 170 L1180 400"/>
-    <path d="M1180 400 L1180 600 L1200 620 L1200 900"/>
-
-    <!-- IC-like nodes -->
-    <rect x="520" y="80" width="60" height="40" rx="2" stroke-width="0.8"/>
-    <line x1="520" y1="100" x2="480" y2="100"/>
-    <line x1="580" y1="100" x2="620" y2="100"/>
-    <line x1="540" y1="80" x2="540" y2="60"/>
-    <line x1="560" y1="80" x2="560" y2="60"/>
-    <line x1="540" y1="120" x2="540" y2="140"/>
-    <line x1="560" y1="120" x2="560" y2="140"/>
-
-    <rect x="1050" y="500" width="80" height="50" rx="2" stroke-width="0.8"/>
-    <line x1="1050" y1="515" x2="1010" y2="515"/>
-    <line x1="1050" y1="535" x2="1010" y2="535"/>
-    <line x1="1130" y1="515" x2="1170" y2="515"/>
-    <line x1="1130" y1="535" x2="1170" y2="535"/>
-    <line x1="1070" y1="500" x2="1070" y2="480"/>
-    <line x1="1100" y1="500" x2="1100" y2="480"/>
-    <line x1="1070" y1="550" x2="1070" y2="570"/>
-    <line x1="1100" y1="550" x2="1100" y2="570"/>
-
-    <rect x="100" y="700" width="60" height="35" rx="2" stroke-width="0.8"/>
-    <line x1="100" y1="717" x2="60" y2="717"/>
-    <line x1="160" y1="717" x2="200" y2="717"/>
-    <line x1="120" y1="700" x2="120" y2="680"/>
-    <line x1="140" y1="700" x2="140" y2="680"/>
-    <line x1="120" y1="735" x2="120" y2="755"/>
-    <line x1="140" y1="735" x2="140" y2="755"/>
-  </g>
-</svg>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">ADITYA WADPALLIWAR</div>
-  <div class="menu-toggle">
-    <div class="hamburger"></div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#small-projects">Mini Builds</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<header id="hero">
-  <div class="hero-inner">
-    <div class="hero-tag">Electronics Engineer</div>
-    <h1 class="hero-name">Aditya<br/><span class="accent">Wadpalliwar</span></h1>
-    <p class="hero-subtitle">B.Tech ECE @ NIT Trichy <span class="hero-separator">&nbsp;|&nbsp;</span> <span class="hero-focus">Digital Design · PCB Design · Embedded Systems · Robotics</span></p>
-    <p class="hero-desc">Electronics engineer and robotics enthusiast at NIT Trichy. I build things that work in the real world — multi-layer PCBs, real-time firmware, and autonomous systems that think fast and move precisely.</p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-secondary">Get In Touch</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Aditya Wadpalliwar</div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-  </div>
-</header>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-header reveal">
-    <div class="section-tag">// 01. About</div>
-    <h2 class="section-title">Who I Am</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="about-grid" style="grid-template-columns:1fr;">
-    <div class="about-text reveal">
-      <p>I'm <strong>Aditya Wadpalliwar</strong>, a 3rd-year B.Tech ECE student at <strong>NIT Trichy</strong>, passionate about bridging the gap between hardware and intelligent control systems.</p>
-      <p>My work spans the full stack of embedded engineering — from schematic design and PCB layout in KiCad, to writing tight real-time firmware in C/C++ for microcontrollers.</p>
-      <p>I'm a Robotics Engineer at <strong>SPIDER R&D Club</strong> at NIT Trichy, where I've contributed to autonomous robots, flight controllers, and control systems for national-level competitions.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-header reveal">
-    <div class="section-tag">// 02. Skills</div>
-    <h2 class="section-title">Technical Arsenal</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">◎</div>
-      <div class="skill-title">Digital Electronics Design</div>
-      <p style="font-size:13px;color:var(--muted)">Logic design, sequential and combinational circuits, FPGA programming, and digital system simulation for hardware verification.</p>
-      <div class="skill-tags">
-        <span class="tag hot">Verilog</span>
-        <span class="tag hot">FPGA</span>
-        <span class="tag">Vivado</span>
-        <span class="tag">Proteus</span>
-        <span class="tag">Logic Design</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">◈</div>
-      <div class="skill-title">PCB Design</div>
-      <p style="font-size:13px;color:var(--muted)">Multi-layer PCB layout with optimized power planes, signal integrity, and low-noise routing for sensor circuits.</p>
-      <div class="skill-tags">
-        <span class="tag hot">KiCad</span>
-        <span class="tag">4-Layer PCB</span>
-        <span class="tag">Power Planes</span>
-        <span class="tag">EMI Control</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">▸</div>
-      <div class="skill-title">Embedded Systems</div>
-      <p style="font-size:13px;color:var(--muted)">Real-time firmware development on STM32 with peripheral integration, RTOS concepts, and hardware abstraction.</p>
-      <div class="skill-tags">
-        <span class="tag hot">STM32F405</span>
-        <span class="tag">C / C++</span>
-        <span class="tag">UART / SPI / I2C</span>
-        <span class="tag">MAVLink</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⦾</div>
-      <div class="skill-title">Control Systems</div>
-      <p style="font-size:13px;color:var(--muted)">PID controller design and tuning for autonomous robots and UAVs, with sensor fusion and real-time feedback loops.</p>
-      <div class="skill-tags">
-        <span class="tag hot">PID Tuning</span>
-        <span class="tag">IMU Fusion</span>
-        <span class="tag">Motor Control</span>
-        <span class="tag">PWM / DShot</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⬡</div>
-      <div class="skill-title">Programming</div>
-      <p style="font-size:13px;color:var(--muted)">Embedded and general-purpose programming with emphasis on performance-critical and real-time applications.</p>
-      <div class="skill-tags">
-        <span class="tag hot">C</span>
-        <span class="tag hot">C++</span>
-        <span class="tag">Python</span>
-        <span class="tag">Verilog</span>
-        <span class="tag">MATLAB</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">◻</div>
-      <div class="skill-title">CAD & Simulation</div>
-      <p style="font-size:13px;color:var(--muted)">Mechanical CAD for robotics, circuit simulation, and FPGA-based design flow.</p>
-      <div class="skill-tags">
-        <span class="tag">Fusion 360</span>
-        <span class="tag">Proteus</span>
-        <span class="tag">Vivado</span>
-        <span class="tag">VS Code</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header reveal">
-    <div class="section-tag">// 03. Projects</div>
-    <h2 class="section-title">Built Hardware</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="projects-list">
-    <div class="project-card reveal">
-      <div>
-        <div class="project-date">JAN 2026</div>
-        <div class="project-title">Custom UAV Flight Controller</div>
-        <p class="project-desc">Designed a flight controller based on the <strong style="color:var(--text)">STM32F405</strong> MCU, integrating IMU, GPS, barometer, and current sensing for full attitude estimation and navigation. Designed a 4-layer PCB in KiCad with optimized power/ground planes and low-noise sensor routing. Implemented real-time firmware with PID stabilization, PWM/DShot motor control, and UART/MAVLink/RC protocols for telemetry and control.</p>
-        <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">STM32F405</span>
-          <span class="tag">KiCad</span>
-          <span class="tag">4-Layer PCB</span>
-          <span class="tag">PID</span>
-          <span class="tag">MAVLink</span>
-          <span class="tag">IMU/GPS</span>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Hi 👋</p>
+          <h1>I’m Aditya, an Electronics Developer building clean and smart hardware systems.</h1>
+          <p class="lead">
+            I work on embedded systems, PCB design, control systems, and robotics. I like turning ideas into real, reliable products with a modern engineering mindset.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Get in Touch</a>
+            <a class="btn btn-secondary" href="mailto:wadpalliwaraditya@gmail.com?subject=Resume%20Request">Resume</a>
+          </div>
+          <div class="socials" aria-label="Social profiles">
+            <a class="icon-link" href="https://github.com/Adityawadpalliwar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.12c0 4.43 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.69c-2.78.61-3.37-1.2-3.37-1.2-.45-1.15-1.1-1.45-1.1-1.45-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.12-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.26-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.03A9.4 9.4 0 0 1 12 6.95c.85 0 1.7.11 2.5.33 1.91-1.3 2.75-1.03 2.75-1.03.54 1.38.2 2.4.1 2.66.64.7 1.03 1.6 1.03 2.69 0 3.84-2.35 4.69-4.58 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0 0 22 12.12C22 6.58 17.52 2 12 2z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/aditya-wadpalliwar/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5A1.56 1.56 0 1 1 6.9 5.38a1.56 1.56 0 0 1 .04 3.12zM5.56 9.75h2.76V19H5.56zm4.5 0h2.64v1.27h.04c.37-.7 1.27-1.44 2.62-1.44 2.8 0 3.31 1.84 3.31 4.24V19h-2.75v-4.62c0-1.1-.02-2.53-1.54-2.53-1.54 0-1.77 1.2-1.77 2.45V19h-2.75z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.instagram.com/aditya_wadpalliwar29/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm8.43 1.75h-8.36a4.07 4.07 0 0 0-4.07 4.07v8.36a4.07 4.07 0 0 0 4.07 4.07h8.36a4.07 4.07 0 0 0 4.07-4.07V7.82a4.07 4.07 0 0 0-4.07-4.07zM17.5 6.7a1.05 1.05 0 1 1 0-2.1 1.05 1.05 0 0 1 0 2.1zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.75a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z"/></svg>
+            </a>
+          </div>
         </div>
-        <div style="margin-top:1.25rem;"><span class="project-badge">In Progress</span></div>
-      </div>
-    </div>
 
-    <div class="project-card reveal">
-      <div>
-        <div class="project-date">APR 2026</div>
-        <div class="project-title">Flappy Bird Implementation in 8051 Assembly</div>
-        <ul class="project-desc project-points">
-          <li>Designed and built a complete Flappy Bird game on an 8051 microcontroller using Assembly language, combining smooth LED matrix rendering with real-time game physics.</li>
-          <li>Implemented custom non-blocking timing loops, bitwise mechanics for bird movement, and real-time collision detection.</li>
-          <li>Integrated hardware-based obstacle randomization using an external timer and configured a 16x2 LCD display for live score tracking.</li>
-          <li>Simulated and validated the full circuit and assembly code in Proteus to ensure stable performance and precise timing.</li>
-        </ul>
-        <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">8051 Assembly</span>
-          <span class="tag">Proteus</span>
-          <span class="tag">LED Matrix</span>
-          <span class="tag">LCD Display</span>
+        <aside class="profile-card" aria-label="Profile photo card">
+          <img class="profile-photo" src="https://avatars.githubusercontent.com/Adityawadpalliwar" alt="Aditya Wadpalliwar profile photo" loading="lazy" />
+          <p class="profile-caption">Electronics Developer · Embedded Systems · Robotics</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Robotics Hardware Intern</h3>
+            <p class="meta">xTerra Robotics · May 2026 – July 2026</p>
+            <ul>
+              <li>Designed and developed a complete BMS PCB in KiCad for a quadruped robot.</li>
+              <li>Created a structured hardware testing manual and technical documentation.</li>
+              <li>Validated a high-current PDB with practical test execution.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Robotics Engineer</h3>
+            <p class="meta">SPIDER R&amp;D Club · NIT Trichy</p>
+            <ul>
+              <li>Worked on autonomous robots, control loops, and real-time firmware.</li>
+              <li>Contributed to competition-grade electronics and integration workflows.</li>
+              <li>Focused on robust hardware + software co-design.</li>
+            </ul>
+          </article>
         </div>
-        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
       </div>
-    </div>
+    </section>
 
-    <div class="project-card reveal">
-      <div>
-        <div class="project-date">OCT 2025</div>
-        <div class="project-title">Line Following & Maze-Solving Robot</div>
-        <ul class="project-desc project-points">
-          <li>Designed and developed an autonomous line-following and maze-solving robot using real-time sensor feedback for precise navigation.</li>
-          <li>Implemented a PID control system to achieve smooth motion and accurate path tracking along the target line.</li>
-          <li>Programmed the LSRB maze-solving algorithm to make automated turning decisions and efficiently solve complex path layouts.</li>
-        </ul>
-        <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">LSRB Algorithm</span>
-          <span class="tag">PID Control</span>
-          <span class="tag">Sensor Fusion</span>
-          <span class="tag">C/C++</span>
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Custom UAV Flight Controller</h3>
+            <p class="meta">STM32F405 · KiCad · Embedded C/C++</p>
+            <p>Developed a 4-layer controller board integrating IMU, GPS, and telemetry interfaces with real-time stabilization firmware.</p>
+          </article>
+          <article class="card">
+            <h3>Line Following &amp; Maze-Solving Robot</h3>
+            <p class="meta">PID Control · Sensor Feedback</p>
+            <p>Built an autonomous robot using real-time sensing and optimized decision logic for fast and accurate path navigation.</p>
+          </article>
+          <article class="card">
+            <h3>Self-Balancing Robot</h3>
+            <p class="meta">IMU Fusion · PWM Motor Drive</p>
+            <p>Implemented sensor fusion and tuned parallel PID loops for dynamic stability under disturbances.</p>
+          </article>
+          <article class="card">
+            <h3>Flappy Bird on 8051 Assembly</h3>
+            <p class="meta">8051 Assembly · Proteus</p>
+            <p>Designed a complete embedded game system with timing control, collision logic, and hardware score display.</p>
+          </article>
         </div>
-        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
       </div>
-    </div>
+    </section>
 
-    <div class="project-card reveal">
-      <div>
-        <div class="project-date">AUG 2025</div>
-        <div class="project-title">Self-Balancing Robot — eYantra Krishi Balancer</div>
-        <ul class="project-desc project-points">
-          <li>Developed an inverted pendulum robot featuring an 6-DOF IMU, quadrature wheel encoders, and customized power/actuator drive circuitry.</li>
-          <li>Implemented complementary filtering for IMU sensor fusion to achieve low-noise tilt angle estimation.</li>
-          <li>Tuned a parallel PID control loop to drive DC motors via PWM, maintaining dynamic stability and disturbance rejection.</li>
-        </ul>
-        <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">IMU Fusion</span>
-          <span class="tag">Fusion 360</span>
-          <span class="tag">PID</span>
-          <span class="tag">3D Printing</span>
-          <span class="tag">eYantra</span>
+    <section id="achievements">
+      <div class="container">
+        <h2 class="section-title">Achievements</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>2nd Place — Robotics Challenge</h3>
+            <p>SENSORS Symposium, Department of ICE, NIT Trichy.</p>
+          </article>
+          <article class="card">
+            <h3>Top 10 / 853 Teams</h3>
+            <p>Embedded Programming Challenge, Shaastra 2026, IIT Madras.</p>
+          </article>
+          <article class="card">
+            <h3>Top 20 / 755 Teams</h3>
+            <p>Reverse Engineering Challenge, Shaastra 2026, IIT Madras.</p>
+          </article>
+          <article class="card">
+            <h3>Top 50 / 650+ Teams</h3>
+            <p>Qualified for Stage 2 in e-Yantra Robotics Challenge — KrishiBalancer theme.</p>
+          </article>
         </div>
-        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- GitHub CTA -->
-  <div class="reveal" style="margin-top:2.5rem;padding:1.75rem 2rem;background:var(--panel);border:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-    <div>
-      <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--accent);margin-bottom:0.4rem;">// CODE</div>
-      <div style="font-size:15px;font-weight:700;color:var(--text);">All projects are open-source on GitHub</div>
-      <div style="font-size:13px;color:var(--muted);margin-top:0.25rem;">Source code, PCB files, firmware — everything's up there.</div>
-    </div>
-    <a href="https://github.com/Adityawadpalliwar" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" role="img" aria-label="GitHub Logo"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.92.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-      View on GitHub
-    </a>
-  </div>
-</section>
-
-<!-- SMALL PROJECTS -->
-<section id="small-projects">
-  <div class="section-header reveal">
-    <div class="section-tag">// 03b. Mini Builds</div>
-    <h2 class="section-title">Small Projects</h2>
-    <div class="section-line"></div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
-    <div class="skill-card reveal" style="cursor:default;">
-      <div class="skill-icon">▸</div>
-      <div class="skill-title">Power Distribution Board (PDB)</div>
-      <ul class="mini-build-points">
-        <li>Executed system-level architecture, schematic capture, and 4-layer PCB layout in KiCad for a 54V (12S), 120A continuous power distribution board.</li>
-        <li>Integrated dual buck regulators for 12V and 5V rails with hardware-level pre-charge and switch control to suppress inrush current and prevent connector sparking.</li>
-        <li>Designed the power path to support reliable high-current distribution while improving safety, layout clarity, and serviceability.</li>
-      </ul>
-      <div class="skill-tags">
-        <span class="tag">KiCad</span>
-        <span class="tag">4-Layer PCB</span>
-        <span class="tag">PDB</span>
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Let’s Connect</h2>
+        <div class="contact-note">
+          <p>If you have some crazy ideas and wanna talk, ping me.</p>
+          <p>I’m always open to discussing electronics, robots, product ideas, and collaborations.</p>
+          <a class="contact-mail" href="mailto:wadpalliwaraditya@gmail.com">wadpalliwaraditya@gmail.com</a>
+        </div>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="skill-card reveal" style="cursor:default;">
-      <div class="skill-icon">▸</div>
-      <div class="skill-title">Spider Laser Bot PCB</div>
-      <ul class="mini-build-points">
-        <li>Designed a custom PCB incorporating an ESP32 microcontroller to host an onboard web server for wireless robot control.</li>
-        <li>Integrated a photoresistor (LDR) sensing circuit with an adjustable potentiometer to fine-tune light detection sensitivity.</li>
-        <li>Incorporated a logic-level shifter for safe laser targeting control alongside a motor driver module for driving system actuators.</li>
-      </ul>
-      <div class="skill-tags">
-        <span class="tag">2-Layer PCB</span>
-        <span class="tag">KiCad</span>
-        <span class="tag">Laser-Bot</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header reveal">
-    <div class="section-tag">// 04. Experience</div>
-    <h2 class="section-title">Positions & Roles</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="exp-timeline">
-    <div class="exp-item reveal">
-      <div class="exp-period">MAY 2026 – JULY 2026</div>
-      <div class="exp-role">Robotics Hardware Intern</div>
-      <div class="exp-org">xTerra Robotics</div>
-      <ul class="exp-desc">
-        <li>Designed, laid out, and developed a complete Battery Management System (BMS) PCB in KiCad for a quadruped robot.</li>
-        <li>Authored comprehensive technical documentation and a structured testing manual to ensure proper system evaluation.</li>
-        <li>Validated the Power Distribution Board (PDB) by writing a hardware test plan and executing physical testing at a specialized facility.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Education under Experience -->
-  <div class="section-header reveal" style="padding-top:3rem">
-    <div class="section-tag">// Education</div>
-    <h2 class="section-title">Academic Background</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="edu-grid">
-    <div class="edu-card reveal">
-      <div class="edu-year">2024 – PRESENT</div>
-      <div class="edu-degree">B.Tech — Electronics & Communication Engineering</div>
-      <div class="edu-inst">NIT, Trichy</div>
-    </div>
-  </div>
-
-  <!-- Achievements -->
-  <div class="section-header reveal" style="padding-top:3rem">
-    <div class="section-tag">// Achievements</div>
-    <h2 class="section-title">Awards & Recognition</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="achieve-grid">
-    <div class="achieve-card reveal">
-      <div class="achieve-num">#2</div>
-      <div class="achieve-text"><strong>Robotics Challenge</strong>  2nd Place, SENSORS — Departmental Symposium of ICE, NIT Trichy</div>
-    </div>
-    <div class="achieve-card reveal">
-      <div class="achieve-num">T10</div>
-      <div class="achieve-text"><strong>Embedded Programming Challenge</strong> Top 10 out of 853 teams, Shaastra 2026, IIT Madras</div>
-    </div>
-    <div class="achieve-card reveal">
-      <div class="achieve-num">T20</div>
-      <div class="achieve-text"><strong>Reverse Engineering Challenge</strong> Top 20 out of 755 teams, Shaastra 2026, IIT Madras</div>
-    </div>
-    <div class="achieve-card reveal">
-      <div class="achieve-num" style="font-size:1.1rem;min-width:28px;">EYRC</div>
-      <div class="achieve-text"><strong>e-Yantra Robotics Challenge (eYRC)</strong> Ranked in the top 50 out of 650+ competing teams nationwide to qualify for Stage 2 of the competition for <strong>KrishiBalancer (KB)</strong> theme</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header reveal">
-    <div class="section-tag">// 05. Contact</div>
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="contact-grid">
-    <p class="contact-intro">Have a project in mind, an opportunity to share, or just want to talk electronics? I'm always open to new connections and collaborations.</p>
-    <div class="contact-links">
-      <a href="mailto:wadpalliwaraditya@gmail.com" class="contact-link">
-        <span class="contact-link-icon">EMAIL</span>
-        wadpalliwaraditya@gmail.com
-      </a>
-      <a href="https://github.com/Adityawadpalliwar" target="_blank" class="contact-link">
-        <span class="contact-link-icon">GITHUB</span>
-        github.com/Adityawadpalliwar
-      </a>
-      <a href="https://www.instagram.com/aditya_wadpalliwar29/" target="_blank" class="contact-link">
-        <span class="contact-link-icon">INSTAGRAM</span>
-        instagram.com/aditya_wadpalliwar29
-      </a>
-      <a href="https://www.linkedin.com/in/aditya-wadpalliwar/" target="_blank" class="contact-link">
-        <span class="contact-link-icon">LINKEDIN</span>
-        linkedin.com/in/adityawadpalliwar
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>Designed & Built by <span>Aditya Wadpalliwar</span></p>
-</footer>
-
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-  document.querySelectorAll('.hero-inner .reveal').forEach(el => el.classList.add('visible'));
-
-  const navEl = document.querySelector('nav');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
-  menuToggle.addEventListener('click', () => {
-    navEl.classList.toggle('open');
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navEl.classList.remove('open');
-    });
-  });
-</script>
+  <footer>
+    Designed and built by Aditya Wadpalliwar
+  </footer>
 </body>
 </html>
