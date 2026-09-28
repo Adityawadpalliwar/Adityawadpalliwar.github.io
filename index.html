@@ -59,6 +59,30 @@
     font-family: var(--sans);
     font-size: 15px;
     line-height: 1.7;
+    --accent2: #00ff9d;
+    --accent3: #ff6b35;
+    overflow-x: hidden;
+    --muted: #6b8296;
+    --border: rgba(0,212,255,0.15);
+    --border2: rgba(0,212,255,0.08);
+    --grid: rgba(0,212,255,0.04);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+    --display: 'Space Grotesk', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, .hero-name, .section-title, .project-title, .skill-title, .exp-role, .edu-degree {
+    font-family: var(--display);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
     overflow-x: hidden;
   }
 
@@ -89,7 +113,6 @@
     opacity: 0.25;
   }
 
-  /* ─── NAV ─── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -400,7 +423,7 @@
   /* ─── SKILLS ─── */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
   }
 
@@ -442,9 +465,21 @@
   .skill-title {
     font-size: 14px;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
+    color: var(--skill-color, var(--accent));
+    margin-bottom: 1rem;
     letter-spacing: 0.5px;
+  }
+
+  .skill-card.skill-programming { --skill-color: #ffb86b; }
+  .skill-card.skill-hardware { --skill-color: #00d4ff; }
+  .skill-card.skill-firmware { --skill-color: #00ff9d; }
+  .skill-card.skill-protocols { --skill-color: #ff7aa8; }
+  .skill-card.skill-tools { --skill-color: #c5a3ff; grid-column: 1 / -1; }
+
+  .skill-card .tag {
+    color: var(--skill-color, var(--muted));
+    background: color-mix(in srgb, var(--skill-color, var(--accent)) 9%, transparent);
+    border-color: color-mix(in srgb, var(--skill-color, var(--accent)) 25%, transparent);
   }
 
   .skill-tags {
@@ -828,6 +863,7 @@
     nav ul li a { font-size: 16px; }
     .hero-stats { gap: 2rem; flex-wrap: wrap; }
     .about-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .contact-links { grid-template-columns: 1fr; }
     .hero-inner { padding: 0 1.5rem; }
@@ -913,7 +949,6 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#small-projects">Mini Builds</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -943,9 +978,7 @@
   </div>
   <div class="about-grid" style="grid-template-columns:1fr;">
     <div class="about-text reveal">
-      <p>I'm <strong>Aditya Wadpalliwar</strong>, a 3rd-year B.Tech ECE student at <strong>NIT Trichy</strong>, passionate about bridging the gap between hardware and intelligent control systems.</p>
-      <p>My work spans the full stack of embedded engineering — from schematic design and PCB layout in KiCad, to writing tight real-time firmware in C/C++ for microcontrollers.</p>
-      <p>I'm a Robotics Engineer at <strong>SPIDER R&D Club</strong> at NIT Trichy, where I've contributed to autonomous robots, flight controllers, and control systems for national-level competitions.</p>
+      <p>I am an Electrical and Electronics Engineering student at NIT Trichy with hands-on experience taking complex hardware projects from schematic design through physical bench validation. My focus spans multi-layer PCB layout, bare-metal C/C++ embedded systems, and high-current power electronics—including custom Battery Management Systems (BMS) and autonomous robotic platforms. A finalist in national competitions like e-Yantra and IIT Madras Shaastra, I am driven by root-level hardware problems and building indigenous core tech.</p>
     </div>
   </div>
 </section>
@@ -954,78 +987,15 @@
 <section id="skills">
   <div class="section-header reveal">
     <div class="section-tag">// 02. Skills</div>
-    <h2 class="section-title">Technical Arsenal</h2>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
     <div class="section-line"></div>
   </div>
   <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">◎</div>
-      <div class="skill-title">Digital Electronics Design</div>
-      <p style="font-size:13px;color:var(--muted)">Logic design, sequential and combinational circuits, FPGA programming, and digital system simulation for hardware verification.</p>
-      <div class="skill-tags">
-        <span class="tag hot">Verilog</span>
-        <span class="tag hot">FPGA</span>
-        <span class="tag">Vivado</span>
-        <span class="tag">Proteus</span>
-        <span class="tag">Logic Design</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">◈</div>
-      <div class="skill-title">PCB Design</div>
-      <p style="font-size:13px;color:var(--muted)">Multi-layer PCB layout with optimized power planes, signal integrity, and low-noise routing for sensor circuits.</p>
-      <div class="skill-tags">
-        <span class="tag hot">KiCad</span>
-        <span class="tag">4-Layer PCB</span>
-        <span class="tag">Power Planes</span>
-        <span class="tag">EMI Control</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">▸</div>
-      <div class="skill-title">Embedded Systems</div>
-      <p style="font-size:13px;color:var(--muted)">Real-time firmware development on STM32 with peripheral integration, RTOS concepts, and hardware abstraction.</p>
-      <div class="skill-tags">
-        <span class="tag hot">STM32F405</span>
-        <span class="tag">C / C++</span>
-        <span class="tag">UART / SPI / I2C</span>
-        <span class="tag">MAVLink</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⦾</div>
-      <div class="skill-title">Control Systems</div>
-      <p style="font-size:13px;color:var(--muted)">PID controller design and tuning for autonomous robots and UAVs, with sensor fusion and real-time feedback loops.</p>
-      <div class="skill-tags">
-        <span class="tag hot">PID Tuning</span>
-        <span class="tag">IMU Fusion</span>
-        <span class="tag">Motor Control</span>
-        <span class="tag">PWM / DShot</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⬡</div>
-      <div class="skill-title">Programming</div>
-      <p style="font-size:13px;color:var(--muted)">Embedded and general-purpose programming with emphasis on performance-critical and real-time applications.</p>
-      <div class="skill-tags">
-        <span class="tag hot">C</span>
-        <span class="tag hot">C++</span>
-        <span class="tag">Python</span>
-        <span class="tag">Verilog</span>
-        <span class="tag">MATLAB</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">◻</div>
-      <div class="skill-title">CAD & Simulation</div>
-      <p style="font-size:13px;color:var(--muted)">Mechanical CAD for robotics, circuit simulation, and FPGA-based design flow.</p>
-      <div class="skill-tags">
-        <span class="tag">Fusion 360</span>
-        <span class="tag">Proteus</span>
-        <span class="tag">Vivado</span>
-        <span class="tag">VS Code</span>
-      </div>
-    </div>
+    <div class="skill-card skill-programming reveal"><div class="skill-title">Programming Languages</div><div class="skill-tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">Verilog</span></div></div>
+    <div class="skill-card skill-hardware reveal"><div class="skill-title">Hardware &amp; Power</div><div class="skill-tags"><span class="tag">Multi-layer PCB</span><span class="tag">Battery Management Systems (BMS)</span><span class="tag">Power Distribution</span><span class="tag">Thermal Management</span><span class="tag">Circuit Simulation</span></div></div>
+    <div class="skill-card skill-firmware reveal"><div class="skill-title">Embedded Firmware</div><div class="skill-tags"><span class="tag">Embedded C/C++</span><span class="tag">Bare-Metal Assembly</span></div></div>
+    <div class="skill-card skill-protocols reveal"><div class="skill-title">Protocols &amp; Validation</div><div class="skill-tags"><span class="tag">CAN</span><span class="tag">I2C</span><span class="tag">SPI</span><span class="tag">UART</span><span class="tag">JTAG</span><span class="tag">Logic Analyzers</span><span class="tag">Oscilloscopes</span></div></div>
+    <div class="skill-card skill-tools reveal"><div class="skill-title">Tools</div><div class="skill-tags"><span class="tag">KiCad</span><span class="tag">Altium Designer</span><span class="tag">LTspice</span><span class="tag">Proteus</span><span class="tag">Keil µVision</span><span class="tag">MATLAB</span><span class="tag">Fusion 360</span><span class="tag">Vivado</span><span class="tag">GitHub</span><span class="tag">VS Code</span></div></div>
   </div>
 </section>
 
@@ -1039,18 +1009,33 @@
   <div class="projects-list">
     <div class="project-card reveal">
       <div>
-        <div class="project-date">JAN 2026</div>
-        <div class="project-title">Custom UAV Flight Controller</div>
-        <p class="project-desc">Designed a flight controller based on the <strong style="color:var(--text)">STM32F405</strong> MCU, integrating IMU, GPS, barometer, and current sensing for full attitude estimation and navigation. Designed a 4-layer PCB in KiCad with optimized power/ground planes and low-noise sensor routing. Implemented real-time firmware with PID stabilization, PWM/DShot motor control, and UART/MAVLink/RC protocols for telemetry and control.</p>
+        <div class="project-date">SEP 2026</div>
+        <div class="project-title">Smart Hydration Reminder PCB</div>
+        <ul class="project-desc project-points">
+          <li>Architected the system-level design and executed the 4-layer PCB layout for a compact IoT wearable board (37.48 × 29.99 mm), engineering a dedicated power/ground plane stack-up to support an ESP32-C3-MINI-1U-H4 RISC-V MCU, Bosch BMI270 IMU, and RF front-end within a sub-40 mm footprint.</li>
+          <li>Integrated an MCP73831 Li-ion charge controller with a Richtek RT9080 ultra-low-Iq LDO in a hard-off power architecture that gates the regulator enable line rather than switching high-current rails through mechanical contacts, achieving sub-µA shutdown current while keeping USB-C charging always active behind ESD-protected input.</li>
+          <li>Designed hardware to support real-time accelerometer/gyroscope tilt detection for sip validation, wake-on-motion, deep-sleep power management, PWM-driven buzzer feedback, and a BLE GATT interface for remote hydration tracking.</li>
+        </ul>
+        <div class="skill-tags" style="margin-top:1rem"><span class="tag hot">ESP32-C3</span><span class="tag">BMI270 IMU</span><span class="tag">4-Layer PCB</span><span class="tag">BLE</span><span class="tag">USB-C</span></div>
+        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-date">AUG 2026</div>
+        <div class="project-title">Power Distribution Board (PDB)</div>
+        <ul class="project-desc project-points">
+          <li>Executed system-level architecture, schematic capture, and 4-layer PCB layout in KiCad for a 54V (12S), 120A continuous power distribution board.</li>
+          <li>Integrated dual buck regulators for 12V and 5V rails with hardware-level pre-charge and switch control to suppress inrush current and prevent connector sparking.</li>
+          <li>Designed the power path to support reliable high-current distribution while improving safety, layout clarity, and serviceability.</li>
+        </ul>
         <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">STM32F405</span>
           <span class="tag">KiCad</span>
           <span class="tag">4-Layer PCB</span>
-          <span class="tag">PID</span>
-          <span class="tag">MAVLink</span>
-          <span class="tag">IMU/GPS</span>
+          <span class="tag">PDB</span>
         </div>
-        <div style="margin-top:1.25rem;"><span class="project-badge">In Progress</span></div>
+        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
       </div>
     </div>
 
@@ -1064,11 +1049,50 @@
           <li>Integrated hardware-based obstacle randomization using an external timer and configured a 16x2 LCD display for live score tracking.</li>
           <li>Simulated and validated the full circuit and assembly code in Proteus to ensure stable performance and precise timing.</li>
         </ul>
+        <div class="skill-tags" style="margin-top:1rem"><span class="tag hot">8051 Assembly</span><span class="tag">Proteus</span><span class="tag">LED Matrix</span><span class="tag">LCD Display</span></div>
+        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-date">FEB 2026</div>
+        <div class="project-title">Spider Laser Bot PCB</div>
+        <ul class="project-desc project-points">
+          <li>Designed a custom PCB incorporating an ESP32 microcontroller to host an onboard web server for wireless robot control.</li>
+          <li>Integrated a photoresistor (LDR) sensing circuit with an adjustable potentiometer to fine-tune light detection sensitivity.</li>
+          <li>Incorporated a logic-level shifter for safe laser targeting control alongside a motor driver module for driving system actuators.</li>
+        </ul>
+        <div class="skill-tags" style="margin-top:1rem"><span class="tag">2-Layer PCB</span><span class="tag">KiCad</span><span class="tag">Laser-Bot</span></div>
+        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-date">JAN 2026</div>
+        <div class="project-title">Custom UAV Flight Controller</div>
+        <p class="project-desc">Designed a flight controller based on the <strong style="color:var(--text)">STM32F405</strong> MCU, integrating IMU, GPS, barometer, and current sensing for full attitude estimation and navigation. Designed a 4-layer PCB in KiCad with optimized power/ground planes and low-noise sensor routing. Implemented real-time firmware with PID stabilization, PWM/DShot motor control, and UART/MAVLink/RC protocols for telemetry and control.</p>
+        <div class="skill-tags" style="margin-top:1rem"><span class="tag hot">STM32F405</span><span class="tag">KiCad</span><span class="tag">4-Layer PCB</span><span class="tag">PID</span><span class="tag">MAVLink</span><span class="tag">IMU/GPS</span></div>
+        <div style="margin-top:1.25rem;"><span class="project-badge">In Progress</span></div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-date">DEC 2025</div>
+        <div class="project-title">Self-Balancing Robot — eYantra Krishi Balancer</div>
+        <ul class="project-desc project-points">
+          <li>Developed an inverted pendulum robot featuring an 6-DOF IMU, quadrature wheel encoders, and customized power/actuator drive circuitry.</li>
+          <li>Implemented complementary filtering for IMU sensor fusion to achieve low-noise tilt angle estimation.</li>
+          <li>Tuned a parallel PID control loop to drive DC motors via PWM, maintaining dynamic stability and disturbance rejection.</li>
+        </ul>
         <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">8051 Assembly</span>
-          <span class="tag">Proteus</span>
-          <span class="tag">LED Matrix</span>
-          <span class="tag">LCD Display</span>
+          <span class="tag hot">IMU Fusion</span>
+          <span class="tag">Fusion 360</span>
+          <span class="tag">PID</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">eYantra</span>
         </div>
         <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
       </div>
@@ -1083,32 +1107,7 @@
           <li>Implemented a PID control system to achieve smooth motion and accurate path tracking along the target line.</li>
           <li>Programmed the LSRB maze-solving algorithm to make automated turning decisions and efficiently solve complex path layouts.</li>
         </ul>
-        <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">LSRB Algorithm</span>
-          <span class="tag">PID Control</span>
-          <span class="tag">Sensor Fusion</span>
-          <span class="tag">C/C++</span>
-        </div>
-        <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div>
-        <div class="project-date">AUG 2025</div>
-        <div class="project-title">Self-Balancing Robot — eYantra Krishi Balancer</div>
-        <ul class="project-desc project-points">
-          <li>Developed an inverted pendulum robot featuring an 6-DOF IMU, quadrature wheel encoders, and customized power/actuator drive circuitry.</li>
-          <li>Implemented complementary filtering for IMU sensor fusion to achieve low-noise tilt angle estimation.</li>
-          <li>Tuned a parallel PID control loop to drive DC motors via PWM, maintaining dynamic stability and disturbance rejection.</li>
-        </ul>
-        <div class="skill-tags" style="margin-top:1rem">
-          <span class="tag hot">IMU Fusion</span>
-          <span class="tag">Fusion 360</span>
-          <span class="tag">PID</span>
-          <span class="tag">3D Printing</span>
-          <span class="tag">eYantra</span>
-        </div>
+        <div class="skill-tags" style="margin-top:1rem"><span class="tag hot">LSRB Algorithm</span><span class="tag">PID Control</span><span class="tag">Sensor Fusion</span><span class="tag">C/C++</span></div>
         <div style="margin-top:1.25rem;"><span class="project-badge">Completed</span></div>
       </div>
     </div>
@@ -1128,46 +1127,6 @@
   </div>
 </section>
 
-<!-- SMALL PROJECTS -->
-<section id="small-projects">
-  <div class="section-header reveal">
-    <div class="section-tag">// 03b. Mini Builds</div>
-    <h2 class="section-title">Small Projects</h2>
-    <div class="section-line"></div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
-    <div class="skill-card reveal" style="cursor:default;">
-      <div class="skill-icon">▸</div>
-      <div class="skill-title">Power Distribution Board (PDB)</div>
-      <ul class="mini-build-points">
-        <li>Executed system-level architecture, schematic capture, and 4-layer PCB layout in KiCad for a 54V (12S), 120A continuous power distribution board.</li>
-        <li>Integrated dual buck regulators for 12V and 5V rails with hardware-level pre-charge and switch control to suppress inrush current and prevent connector sparking.</li>
-        <li>Designed the power path to support reliable high-current distribution while improving safety, layout clarity, and serviceability.</li>
-      </ul>
-      <div class="skill-tags">
-        <span class="tag">KiCad</span>
-        <span class="tag">4-Layer PCB</span>
-        <span class="tag">PDB</span>
-      </div>
-    </div>
-
-    <div class="skill-card reveal" style="cursor:default;">
-      <div class="skill-icon">▸</div>
-      <div class="skill-title">Spider Laser Bot PCB</div>
-      <ul class="mini-build-points">
-        <li>Designed a custom PCB incorporating an ESP32 microcontroller to host an onboard web server for wireless robot control.</li>
-        <li>Integrated a photoresistor (LDR) sensing circuit with an adjustable potentiometer to fine-tune light detection sensitivity.</li>
-        <li>Incorporated a logic-level shifter for safe laser targeting control alongside a motor driver module for driving system actuators.</li>
-      </ul>
-      <div class="skill-tags">
-        <span class="tag">2-Layer PCB</span>
-        <span class="tag">KiCad</span>
-        <span class="tag">Laser-Bot</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-header reveal">
@@ -1181,9 +1140,9 @@
       <div class="exp-role">Robotics Hardware Intern</div>
       <div class="exp-org">xTerra Robotics</div>
       <ul class="exp-desc">
-        <li>Designed, laid out, and developed a complete Battery Management System (BMS) PCB in KiCad for a quadruped robot.</li>
-        <li>Authored comprehensive technical documentation and a structured testing manual to ensure proper system evaluation.</li>
-        <li>Validated the Power Distribution Board (PDB) by writing a hardware test plan and executing physical testing at a specialized facility.</li>
+        <li>Engineered a custom, multi-layer Battery Management System (BMS) PCB using KiCad for a quadruped robot, optimizing trace routing for thermal dissipation and integrating critical protection circuitry to handle high-current transient loads.</li>
+        <li>Created technical documentation and standardized test manuals for the BMS to speed up hardware debugging and integration.</li>
+        <li>Executed rigorous hardware validation of the Power Distribution Board (PDB) by developing custom test plans; conducted testing at a specialized facility to verify operational stability.</li>
       </ul>
     </div>
   </div>
