@@ -35,7 +35,7 @@
     --bg3: #111820;
     --panel: #0e1620;
     --accent: #00d4ff;
-    --accent2: #00ff9d;
+    --accent2: #2563eb;
     --accent3: #ff6b35;
     --text: #e2eaf2;
     --muted: #6b8296;
@@ -59,7 +59,7 @@
     font-family: var(--sans);
     font-size: 15px;
     line-height: 1.7;
-    --accent2: #00ff9d;
+    --accent2: #2563eb;
     --accent3: #ff6b35;
     overflow-x: hidden;
     --muted: #6b8296;
@@ -306,7 +306,7 @@
   }
 
   .btn-secondary:hover {
-    background: rgba(0,212,255,0.06);
+    background: rgba(255,255,255,0.08);
     border-color: var(--accent);
   }
 
@@ -472,7 +472,7 @@
 
   .skill-card.skill-programming { --skill-color: #ffb86b; }
   .skill-card.skill-hardware { --skill-color: #00d4ff; }
-  .skill-card.skill-firmware { --skill-color: #00ff9d; }
+  .skill-card.skill-firmware { --skill-color: #0e7490; }
   .skill-card.skill-protocols { --skill-color: #ff7aa8; }
   .skill-card.skill-tools { --skill-color: #c5a3ff; grid-column: 1 / -1; }
 
@@ -872,6 +872,301 @@
     .hero-subtitle .hero-focus { display: block; margin-top: 0.5rem; }
   }
 </style>
+<style>
+  :root {
+    --bg: #f8fbff;
+    --bg2: #f1f6fc;
+    --bg3: #e7f0fa;
+    --panel: rgba(255,255,255,0.86);
+    --accent: #174ea6;
+    --accent2: #0e7490;
+    --accent3: #7c3aed;
+    --text: #102a43;
+    --muted: #52606d;
+    --border: #bfdbfe;
+    --border2: #e2e8f0;
+    --grid: rgba(37,99,235,0.045);
+    --mono: 'Inter', sans-serif;
+    --sans: 'Inter', sans-serif;
+    --display: 'Space Grotesk', sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #ffffff 0%, #f7fbff 46%, #eaf3fc 100%);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    background-attachment: fixed;
+  }
+
+  body::before {
+    background-image:
+      linear-gradient(rgba(23,78,166,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23,78,166,0.045) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .circuit-svg {
+    opacity: 0.06;
+  }
+
+  nav {
+    height: auto;
+    min-height: 64px;
+    padding: 0 max(1.25rem, calc((100vw - 1100px) / 2));
+    background: rgba(255,255,255,0.92);
+    border-bottom: 1px solid var(--border2);
+    box-shadow: 0 4px 18px rgba(15,23,42,0.04);
+  }
+
+  .nav-logo {
+    color: var(--text);
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .nav-logo span,
+  nav a { color: var(--muted); }
+
+  nav a {
+    font-family: var(--sans);
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  nav a:hover { color: var(--accent); }
+
+  section,
+  .hero-inner {
+    max-width: 1100px;
+  }
+
+  #hero {
+    min-height: auto;
+    padding: 8rem 2rem 3rem;
+  }
+
+  .hero-inner { padding: 0; }
+
+  .hero-tag,
+  .section-tag {
+    color: var(--accent2);
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: none;
+  }
+
+  .hero-tag::before { background: var(--accent2); }
+
+  .hero-name {
+    color: #0b2545;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    letter-spacing: -1.5px;
+    line-height: 1.08;
+  }
+
+  .hero-name .accent { color: var(--accent); }
+
+  .hero-subtitle {
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+
+  .hero-subtitle .hero-focus { color: var(--accent2); }
+
+  .hero-desc,
+  .about-text p,
+  .project-desc,
+  .exp-desc,
+  .contact-intro {
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.75;
+    text-align: left;
+  }
+
+  .hero-desc { max-width: 62ch; }
+
+  .hero-btns { gap: 0.85rem; }
+
+  .btn-primary,
+  .btn-secondary {
+    border-radius: 999px;
+    clip-path: none;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 0.72rem 1.25rem;
+    text-transform: none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+    color: #fff;
+    box-shadow: 0 10px 28px rgba(37,99,235,0.24);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 12px 30px rgba(37,99,235,0.3);
+  }
+
+  .btn-secondary {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: var(--accent);
+  }
+
+  .btn-secondary:hover { background: #dbeafe; }
+
+  .section-header {
+    margin-bottom: 2rem;
+    padding-top: 3rem;
+  }
+
+  .section-title {
+    color: #0b2545;
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    letter-spacing: 0;
+  }
+
+  .section-line { background: var(--accent); }
+
+  .about-grid { grid-template-columns: 1fr !important; }
+
+  .about-panel,
+  .skill-card,
+  .project-card,
+  .achieve-card,
+  .edu-card {
+    background: var(--panel);
+    border: 1px solid var(--border2);
+    border-radius: 14px;
+    clip-path: none;
+    box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+  }
+
+  .project-title,
+  .skill-title,
+  .exp-role,
+  .edu-degree,
+  .achieve-text strong,
+  .info-val {
+    color: #163b63;
+  }
+
+  .skill-card.skill-firmware { --skill-color: #0e7490; }
+
+  .tag.hot {
+    background: #ecfeff;
+    border-color: #a5f3fc;
+    color: #0e7490;
+  }
+
+  .project-card .tag,
+  .project-card .tag.hot {
+    background: #eef2ff;
+    border-color: #dbeafe;
+    color: var(--accent);
+  }
+
+  .skills-grid .tag,
+  .skills-grid .tag.hot {
+    background: #ecfeff;
+    border-color: #a5f3fc;
+    color: #0e7490;
+  }
+
+  .project-badge {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: var(--accent);
+  }
+
+  .about-panel::before { display: none; }
+
+  .skill-card:hover,
+  .project-card:hover,
+  .achieve-card:hover,
+  .edu-card:hover {
+    border-color: #bfdbfe;
+    transform: translateY(-2px);
+  }
+
+  .skill-title { letter-spacing: 0; }
+
+  .tag {
+    border-radius: 999px;
+    background: #eef2ff;
+    border-color: #dbeafe;
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 0.22rem 0.65rem;
+    text-transform: none;
+  }
+
+  .project-date,
+  .exp-period,
+  .edu-year {
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+
+  .project-title,
+  .exp-role,
+  .edu-degree { letter-spacing: 0; }
+
+  .project-badge {
+    border-radius: 999px;
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 0.2rem 0.6rem;
+    text-transform: none;
+  }
+
+  .contact-link {
+    border-radius: 12px;
+    background: var(--panel);
+  }
+
+  .contact-link-icon {
+    color: var(--accent);
+    font-family: var(--sans);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  footer { margin-top: 2rem; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    nav ul { background: rgba(255,255,255,0.98); }
+    nav ul li a { font-size: 1rem; }
+    #hero { padding: 7rem 1.25rem 2rem; }
+    .hero-inner { padding: 0; }
+    .hero-name { font-size: clamp(2.35rem, 11vw, 3.6rem); }
+    .btn-primary, .btn-secondary { width: auto; }
+  }
+</style>
 </head>
 <body>
 
@@ -962,8 +1257,8 @@
     <p class="hero-subtitle">B.Tech ECE @ NIT Trichy <span class="hero-separator">&nbsp;|&nbsp;</span> <span class="hero-focus">Digital Design · PCB Design · Embedded Systems · Robotics</span></p>
     <p class="hero-desc">Electronics engineer and robotics enthusiast at NIT Trichy. I build things that work in the real world — multi-layer PCBs, real-time firmware, and autonomous systems that think fast and move precisely.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-secondary">Get In Touch</a>
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="https://docs.google.com/document/d/13SiqLSFT3ywrx_3uqTC6r61eAQhC_Ty9lRjiUfTpzdU/edit?usp=sharing" class="btn-secondary" target="_blank" rel="noopener noreferrer">Resume</a>
     </div>
 
   </div>
@@ -992,10 +1287,9 @@
   </div>
   <div class="skills-grid">
     <div class="skill-card skill-programming reveal"><div class="skill-title">Programming Languages</div><div class="skill-tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">Verilog</span></div></div>
-    <div class="skill-card skill-hardware reveal"><div class="skill-title">Hardware &amp; Power</div><div class="skill-tags"><span class="tag">Multi-layer PCB</span><span class="tag">Battery Management Systems (BMS)</span><span class="tag">Power Distribution</span><span class="tag">Thermal Management</span><span class="tag">Circuit Simulation</span></div></div>
-    <div class="skill-card skill-firmware reveal"><div class="skill-title">Embedded Firmware</div><div class="skill-tags"><span class="tag">Embedded C/C++</span><span class="tag">Bare-Metal Assembly</span></div></div>
-    <div class="skill-card skill-protocols reveal"><div class="skill-title">Protocols &amp; Validation</div><div class="skill-tags"><span class="tag">CAN</span><span class="tag">I2C</span><span class="tag">SPI</span><span class="tag">UART</span><span class="tag">JTAG</span><span class="tag">Logic Analyzers</span><span class="tag">Oscilloscopes</span></div></div>
-    <div class="skill-card skill-tools reveal"><div class="skill-title">Tools</div><div class="skill-tags"><span class="tag">KiCad</span><span class="tag">Altium Designer</span><span class="tag">LTspice</span><span class="tag">Proteus</span><span class="tag">Keil µVision</span><span class="tag">MATLAB</span><span class="tag">Fusion 360</span><span class="tag">Vivado</span><span class="tag">GitHub</span><span class="tag">VS Code</span></div></div>
+    <div class="skill-card skill-firmware reveal"><div class="skill-title">Embedded &amp; Firmware</div><div class="skill-tags"><span class="tag">Embedded C/C++</span><span class="tag">Bare-Metal Assembly</span><span class="tag">STM32</span></div></div>
+    <div class="skill-card skill-hardware reveal"><div class="skill-title">Hardware Design</div><div class="skill-tags"><span class="tag">Multi-layer PCB</span><span class="tag">Battery Management Systems (BMS)</span><span class="tag">Power Distribution</span><span class="tag">Thermal Management</span></div></div>
+    <div class="skill-card skill-protocols reveal"><div class="skill-title">Tools &amp; Validation</div><div class="skill-tags"><span class="tag">KiCad</span><span class="tag">Altium Designer</span><span class="tag">LTspice</span><span class="tag">Proteus</span><span class="tag">Keil µVision</span><span class="tag">Fusion 360</span><span class="tag">Vivado</span><span class="tag">MATLAB</span><span class="tag">UART/SPI/I2C</span></div></div>
   </div>
 </section>
 
